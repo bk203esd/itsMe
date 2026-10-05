@@ -402,6 +402,59 @@
             content: "";
         }
 
+        .experience-card {
+            max-width: 680px;
+            margin-top: 24px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+        }
+
+        .experience-label {
+            margin-bottom: 14px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .experience-counter {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .counter-unit {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            padding: 10px 4px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--background);
+        }
+
+        .counter-value {
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: clamp(18px, 3vw, 25px);
+            font-variant-numeric: tabular-nums;
+            line-height: 1.2;
+        }
+
+        .counter-name {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .experience-since {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 10px;
+        }
+
         @media (max-width: 760px) {
             .page-shell {
                 width: min(100% - 36px, 560px);

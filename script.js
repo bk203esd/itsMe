@@ -1,5 +1,42 @@
 const terminalCanvas = document.querySelector(".terminal-rain");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const counterValues = document.querySelectorAll("[data-counter]");
+
+if (counterValues.length > 0) {
+    const startTime = Date.UTC(2018, 0, 1);
+    const dayInMilliseconds = 24 * 60 * 60 * 1000;
+
+    const updateExperienceCounter = () => {
+        const now = new Date();
+        const years = now.getUTCFullYear() - 2018;
+        const anniversary = Date.UTC(2018 + years, 0, 1);
+        let remainingTime = now.getTime() - anniversary;
+
+        const days = Math.floor(remainingTime / dayInMilliseconds);
+        remainingTime %= dayInMilliseconds;
+
+        const hours = Math.floor(remainingTime / (60 * 60 * 1000));
+        remainingTime %= 60 * 60 * 1000;
+
+        const minutes = Math.floor(remainingTime / (60 * 1000));
+        const seconds = Math.floor((remainingTime % (60 * 1000)) / 1000);
+
+        const values = { years, days, hours, minutes, seconds };
+
+        for (const counter of counterValues) {
+            const value = values[counter.dataset.counter];
+
+            if (value !== undefined) {
+                counter.textContent = String(value).padStart(counter.dataset.counter === "days" ? 3 : 2, "0");
+            }
+        }
+    };
+
+    if (Date.now() >= startTime) {
+        updateExperienceCounter();
+        window.setInterval(updateExperienceCounter, 1000);
+    }
+}
 
 if (terminalCanvas && !prefersReducedMotion.matches) {
     const context = terminalCanvas.getContext("2d");
