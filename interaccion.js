@@ -1,3 +1,4 @@
+window.i18nReady.then(() => {
 const celsiusInput = document.querySelector("#celsius");
 const fahrenheitResult = document.querySelector("#fahrenheit-result");
 const temperatureInputLabel = document.querySelector("#temperature-input-label");
@@ -40,14 +41,14 @@ converterTabs.forEach((tab, index) => {
 
 const convertTemperature = () => {
     if (celsiusInput.value.trim() === "") {
-        fahrenheitResult.textContent = "Introduce una temperatura para convertirla.";
+        fahrenheitResult.textContent = t("tool.temperature.empty");
         return;
     }
 
     const celsius = Number(celsiusInput.value);
 
     if (!Number.isFinite(celsius)) {
-        fahrenheitResult.textContent = "Introduce una temperatura válida.";
+        fahrenheitResult.textContent = t("tool.temperature.invalid");
         return;
     }
 
@@ -58,19 +59,26 @@ const convertTemperature = () => {
 };
 
 celsiusInput.addEventListener("input", convertTemperature);
+const updateTemperatureControls = () => {
+    const inputUnit = isFahrenheitToCelsius ? "°F" : "°C";
+    const inputName = isFahrenheitToCelsius ? "Fahrenheit" : "Celsius";
+
+    temperatureInputLabel.textContent = t("tool.temperature.input", { unit: inputName });
+    temperatureUnit.textContent = inputUnit;
+    temperatureSwapButton.setAttribute("aria-label", t(
+        isFahrenheitToCelsius ? "tool.swap.temperature.reverse" : "tool.swap.temperature"
+    ));
+    celsiusInput.placeholder = t(
+        isFahrenheitToCelsius ? "tool.temperature.placeholderReverse" : "tool.temperature.placeholder"
+    );
+    convertTemperature();
+};
+
 temperatureSwapButton.addEventListener("click", () => {
     isFahrenheitToCelsius = !isFahrenheitToCelsius;
-    const inputUnit = isFahrenheitToCelsius ? "°F" : "°C";
-    const outputUnit = isFahrenheitToCelsius ? "°C" : "°F";
-    const inputName = isFahrenheitToCelsius ? "Fahrenheit" : "Celsius";
-    const outputName = isFahrenheitToCelsius ? "Celsius" : "Fahrenheit";
-
-    temperatureInputLabel.textContent = `Temperatura en grados ${inputName}`;
-    temperatureUnit.textContent = inputUnit;
-    temperatureSwapButton.setAttribute("aria-label", `Invertir conversión de ${inputName} a ${outputName}`);
-    celsiusInput.placeholder = isFahrenheitToCelsius ? "Por ejemplo, 72" : "Por ejemplo, 22";
-    convertTemperature();
+    updateTemperatureControls();
 });
+updateTemperatureControls();
 
 const storageValue = document.querySelector("#storage-value");
 const storageFrom = document.querySelector("#storage-from");
@@ -80,14 +88,14 @@ const decimalByteUnits = { b: 0.125, B: 1, KB: 1e3, MB: 1e6, GB: 1e9, TB: 1e12 }
 
 const convertStorage = () => {
     if (storageValue.value.trim() === "") {
-        storageResult.textContent = "Introduce una cantidad para convertirla.";
+        storageResult.textContent = t("tool.storage.empty");
         return;
     }
 
     const value = Number(storageValue.value);
 
     if (!Number.isFinite(value) || value < 0) {
-        storageResult.textContent = "Introduce una cantidad válida (cero o mayor).";
+        storageResult.textContent = t("tool.storage.invalid");
         return;
     }
 
@@ -98,6 +106,7 @@ const convertStorage = () => {
 storageValue.addEventListener("input", convertStorage);
 storageFrom.addEventListener("change", convertStorage);
 storageTo.addEventListener("change", convertStorage);
+convertStorage();
 
 const squareMetersInput = document.querySelector("#square-meters");
 const hectaresResult = document.querySelector("#hectares-result");
@@ -108,14 +117,14 @@ let isHectaresToSquareMeters = false;
 
 const convertArea = () => {
     if (squareMetersInput.value.trim() === "") {
-        hectaresResult.textContent = "Introduce una superficie para convertirla.";
+        hectaresResult.textContent = t("tool.area.empty");
         return;
     }
 
     const squareMeters = Number(squareMetersInput.value);
 
     if (!Number.isFinite(squareMeters) || squareMeters < 0) {
-        hectaresResult.textContent = "Introduce una superficie válida (cero o mayor).";
+        hectaresResult.textContent = t("tool.area.invalid");
         return;
     }
 
@@ -126,18 +135,26 @@ const convertArea = () => {
 };
 
 squareMetersInput.addEventListener("input", convertArea);
+const updateAreaControls = () => {
+    const inputUnit = isHectaresToSquareMeters ? "ha" : "m²";
+    const inputName = isHectaresToSquareMeters ? t("tool.area.hectares") : t("tool.area.squareMeters");
+
+    areaInputLabel.textContent = t("tool.area.input", { unit: inputName });
+    areaUnit.textContent = inputUnit;
+    areaSwapButton.setAttribute("aria-label", t(
+        isHectaresToSquareMeters ? "tool.swap.area.reverse" : "tool.swap.area"
+    ));
+    squareMetersInput.placeholder = t(
+        isHectaresToSquareMeters ? "tool.area.placeholderReverse" : "tool.area.placeholder"
+    );
+    convertArea();
+};
+
 areaSwapButton.addEventListener("click", () => {
     isHectaresToSquareMeters = !isHectaresToSquareMeters;
-    const inputUnit = isHectaresToSquareMeters ? "ha" : "m²";
-    const inputName = isHectaresToSquareMeters ? "hectáreas" : "metros cuadrados";
-    const outputName = isHectaresToSquareMeters ? "metros cuadrados" : "hectáreas";
-
-    areaInputLabel.textContent = `Superficie en ${inputName}`;
-    areaUnit.textContent = inputUnit;
-    areaSwapButton.setAttribute("aria-label", `Invertir conversión de ${inputName} a ${outputName}`);
-    squareMetersInput.placeholder = isHectaresToSquareMeters ? "Por ejemplo, 1" : "Por ejemplo, 10000";
-    convertArea();
+    updateAreaControls();
 });
+updateAreaControls();
 
 const gameResult = document.querySelector("#game-result");
 const playerIcon = document.querySelector("#player-icon");
@@ -145,37 +162,53 @@ const computerIcon = document.querySelector("#computer-icon");
 const gameOutcome = document.querySelector("#game-outcome");
 const gameScore = document.querySelector("#game-score");
 const score = { player: 0, computer: 0 };
-const choices = ["piedra", "papel", "tijera"];
-const choiceIcons = { piedra: "🪨", papel: "📄", tijera: "✂️" };
+const choices = ["rock", "paper", "scissors"];
+const choiceIcons = { rock: "🪨", paper: "📄", scissors: "✂️" };
+const choiceTranslationKeys = { rock: "game.rock", paper: "game.paper", scissors: "game.scissors" };
+let lastGameOutcomeKey = "game.turn";
+let lastGameChoices = null;
+
+const renderGameText = () => {
+    gameOutcome.textContent = t(lastGameOutcomeKey);
+    gameScore.textContent = t("game.score", score);
+
+    if (lastGameChoices) {
+        gameResult.setAttribute("aria-label", t("game.round", {
+            player: t(choiceTranslationKeys[lastGameChoices.player]).toLowerCase(),
+            computer: t(choiceTranslationKeys[lastGameChoices.computer]).toLowerCase()
+        }));
+    }
+};
 
 document.querySelectorAll("[data-choice]").forEach((button) => {
     button.addEventListener("click", () => {
         const playerChoice = button.dataset.choice;
         const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-        let outcome = "Empate.";
+        let outcomeKey = "game.draw";
 
         if (playerChoice !== computerChoice) {
             const playerWins =
-                (playerChoice === "piedra" && computerChoice === "tijera")
-                || (playerChoice === "papel" && computerChoice === "piedra")
-                || (playerChoice === "tijera" && computerChoice === "papel");
+                (playerChoice === "rock" && computerChoice === "scissors")
+                || (playerChoice === "paper" && computerChoice === "rock")
+                || (playerChoice === "scissors" && computerChoice === "paper");
 
             if (playerWins) {
                 score.player += 1;
-                outcome = "¡Has ganado!";
+                outcomeKey = "game.win";
             } else {
                 score.computer += 1;
-                outcome = "Esta vez gana el ordenador.";
+                outcomeKey = "game.lose";
             }
         }
 
         playerIcon.textContent = choiceIcons[playerChoice];
         computerIcon.textContent = choiceIcons[computerChoice];
-        gameResult.setAttribute("aria-label", `Tú: ${playerChoice}. Ordenador: ${computerChoice}.`);
-        gameOutcome.textContent = outcome;
-        gameScore.textContent = `Tú ${score.player} — ${score.computer} Ordenador`;
+        lastGameOutcomeKey = outcomeKey;
+        lastGameChoices = { player: playerChoice, computer: computerChoice };
+        renderGameText();
     });
 });
+renderGameText();
 
 const taskForm = document.querySelector("#task-form");
 const taskInput = document.querySelector("#task-input");
@@ -183,6 +216,12 @@ const taskList = document.querySelector("#task-list");
 const taskMessage = document.querySelector("#task-message");
 const storageKey = "guillem-interaccion-tasks";
 let tasks = [];
+let taskMessageKey = "";
+
+const setTaskMessage = (key) => {
+    taskMessageKey = key;
+    taskMessage.textContent = key ? t(key) : "";
+};
 
 try {
     const savedTasks = localStorage.getItem(storageKey);
@@ -202,17 +241,17 @@ try {
         tasks = parsedTasks;
     }
 } catch (error) {
-    taskMessage.textContent = "No se pudieron cargar las tareas guardadas. Puedes añadir tareas nuevas.";
+    setTaskMessage("tasks.loadError");
     console.error("Error al cargar las tareas:", error);
 }
 
 const saveTasks = () => {
     try {
         localStorage.setItem(storageKey, JSON.stringify(tasks));
-        taskMessage.textContent = "";
+        setTaskMessage("");
         return true;
     } catch (error) {
-        taskMessage.textContent = "No se pudieron guardar los cambios en este navegador.";
+        setTaskMessage("tasks.saveError");
         console.error("Error al guardar las tareas:", error);
         return false;
     }
@@ -231,13 +270,16 @@ const renderTasks = () => {
         checkbox.type = "checkbox";
         checkbox.checked = task.completed;
         checkbox.id = `task-${task.id}`;
-        checkbox.setAttribute("aria-label", `Marcar como ${task.completed ? "pendiente" : "completada"}: ${task.text}`);
+        checkbox.setAttribute("aria-label", t("tasks.mark", {
+            state: t(task.completed ? "tasks.completed" : "tasks.pending"),
+            text: task.text
+        }));
         label.htmlFor = checkbox.id;
         label.textContent = task.text;
         deleteButton.className = "delete-button";
         deleteButton.type = "button";
-        deleteButton.textContent = "Eliminar";
-        deleteButton.setAttribute("aria-label", `Eliminar tarea: ${task.text}`);
+        deleteButton.textContent = t("tasks.delete");
+        deleteButton.setAttribute("aria-label", t("tasks.deleteLabel", { text: task.text }));
 
         checkbox.addEventListener("change", () => {
             task.completed = checkbox.checked;
@@ -261,7 +303,7 @@ taskForm.addEventListener("submit", (event) => {
     const text = taskInput.value.trim();
 
     if (!text) {
-        taskMessage.textContent = "Escribe una tarea antes de añadirla.";
+        setTaskMessage("tasks.inputError");
         taskInput.focus();
         return;
     }
@@ -278,3 +320,13 @@ taskForm.addEventListener("submit", (event) => {
 });
 
 renderTasks();
+
+document.addEventListener("languagechange", () => {
+    updateTemperatureControls();
+    convertStorage();
+    updateAreaControls();
+    renderGameText();
+    renderTasks();
+    setTaskMessage(taskMessageKey);
+});
+});

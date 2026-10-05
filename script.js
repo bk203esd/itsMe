@@ -1,3 +1,4 @@
+window.i18nReady.then(() => {
 const terminalCanvas = document.querySelector(".terminal-rain");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const counterValues = document.querySelectorAll("[data-counter]");
@@ -95,3 +96,4 @@ if (terminalCanvas && !prefersReducedMotion.matches) {
         window.requestAnimationFrame(animateRain);
     }
 }
+});

@@ -1,3 +1,4 @@
+window.i18nReady.then(() => {
 const lifeCanvas = document.querySelector("#life-board");
 const lifeContext = lifeCanvas.getContext("2d");
 
@@ -22,6 +23,14 @@ const speedValue = document.querySelector("#life-speed-value");
 const densityInput = document.querySelector("#life-density");
 const densityValue = document.querySelector("#life-density-value");
 const status = document.querySelector("#life-status");
+let statusKey = "life.status.paused";
+let statusValues = {};
+
+const setStatus = (key, values = {}) => {
+    statusKey = key;
+    statusValues = values;
+    status.textContent = t(key, values);
+};
 
 const cellIndex = (x, y) => y * columns + x;
 
@@ -114,11 +123,9 @@ const animate = (timestamp) => {
 
 const setRunning = (shouldRun) => {
     running = shouldRun;
-    toggleButton.textContent = running ? "Pausar" : "Reanudar";
+    toggleButton.textContent = t(running ? "life.pause" : "life.resume");
     toggleButton.setAttribute("aria-pressed", String(running));
-    status.textContent = running
-        ? "Simulación en marcha. Paúsala para dibujar células."
-        : "Simulación pausada. Haz clic o arrastra para dibujar o borrar células.";
+    setStatus(running ? "life.status.running" : "life.status.paused");
 
     if (running) {
         lastFrameTime = performance.now();
@@ -152,7 +159,7 @@ const drawAtPointer = (event) => {
 
 lifeCanvas.addEventListener("pointerdown", (event) => {
     if (running) {
-        status.textContent = "Pausa la simulación para dibujar células.";
+        setStatus("life.status.mustPause");
         return;
     }
 
@@ -249,7 +256,7 @@ document.querySelectorAll("[data-life-pattern]").forEach((button) => {
         }
 
         render();
-        status.textContent = `${button.textContent} insertado en el centro del tablero.`;
+        setStatus("life.status.inserted", { pattern: button.textContent });
     });
 });
 
@@ -269,14 +276,20 @@ document.querySelector("#life-randomize").addEventListener("click", () => {
     const probability = Number(densityInput.value) / 100;
     cells = Uint8Array.from(cells, () => (Math.random() < probability ? 1 : 0));
     render();
-    status.textContent = `Tablero aleatorizado con ${densityInput.value}% de densidad.`;
+    setStatus("life.status.randomized", { value: densityInput.value });
 });
 
 document.querySelector("#life-clear").addEventListener("click", () => {
     setRunning(false);
     cells.fill(0);
     render();
-    status.textContent = "Tablero limpio.";
+    setStatus("life.status.cleared");
 });
 
 render();
+
+document.addEventListener("languagechange", () => {
+    toggleButton.textContent = t(running ? "life.pause" : "life.resume");
+    setStatus(statusKey, statusValues);
+});
+});

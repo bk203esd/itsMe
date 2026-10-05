@@ -4,56 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#101411">
-    <meta name="description" content="Pequeñas herramientas interactivas de Guillem Mora.">
-    <title>Interacción — Guillem Mora</title>
+    <meta name="description" content="Pequeñas herramientas interactivas de Guillem Mora." data-i18n-attr="content:meta.interaction">
+    <title data-i18n="title.interaction">Interacción — Guillem Mora</title>
     <link rel="stylesheet" href="interaccion.css">
+    <script src="assets/i18n.js" defer></script>
     <script src="interaccion.js" defer></script>
     <script src="game-of-life.js" defer></script>
 </head>
 <body>
     <header class="topbar page-shell">
         <a class="brand" href="index.html">guillem@dev:~$</a>
-        <nav class="nav-links" aria-label="Navegación principal">
-            <a href="index.html">inicio</a>
-            <a href="index.html#sobre-mi">sobre-mi</a>
-            <a href="index.html#trabajo">trabajo</a>
-            <a href="index.html#stack">stack</a>
-            <a href="index.html#contacto">contacto</a>
-            <a href="interaccion.html" aria-current="page">interacción</a>
+        <nav class="nav-links" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.label">
+            <a href="index.html" data-i18n="nav.home">inicio</a>
+            <a href="index.html#sobre-mi" data-i18n="nav.about">sobre-mi</a>
+            <a href="index.html#trabajo" data-i18n="nav.work">trabajo</a>
+            <a href="index.html#stack" data-i18n="nav.stack">stack</a>
+            <a href="index.html#contacto" data-i18n="nav.contact">contacto</a>
+            <a href="interaccion.html" aria-current="page" data-i18n="nav.interaction">interacción</a>
+            <button class="lang-button" type="button" data-language="es" aria-label="Español" data-i18n-attr="aria-label:language.spanish" aria-pressed="true">ES</button>
+            <button class="lang-button" type="button" data-language="en" aria-label="Inglés" data-i18n-attr="aria-label:language.english" aria-pressed="false">EN</button>
         </nav>
     </header>
 
     <main class="page-shell">
         <section class="page-heading" aria-labelledby="page-title">
-            <p class="eyebrow">un pequeño espacio para probar</p>
-            <h1 id="page-title">Interacción<span>.</span></h1>
-            <p>Herramientas sencillas para convertir, jugar y organizarse.</p>
+            <p class="eyebrow" data-i18n="interaction.eyebrow">un pequeño espacio para probar</p>
+            <h1 id="page-title"><span data-i18n="interaction.title">Interacción</span><span>.</span></h1>
+            <p data-i18n="interaction.description">Herramientas sencillas para convertir, jugar y organizarse.</p>
         </section>
 
         <div class="tool-grid">
             <section class="tool-card" aria-labelledby="converter-title">
-                <p class="section-kicker">01 / conversor</p>
-                <h2 id="converter-title">Conversor de unidades</h2>
-                <div class="converter-tabs" role="tablist" aria-label="Tipo de conversión">
-                    <button class="converter-tab" id="tab-temperature" type="button" role="tab" aria-selected="true" aria-controls="panel-temperature" tabindex="0">°C a °F</button>
-                    <button class="converter-tab" id="tab-storage" type="button" role="tab" aria-selected="false" aria-controls="panel-storage" tabindex="-1">Almacenamiento</button>
-                    <button class="converter-tab" id="tab-area" type="button" role="tab" aria-selected="false" aria-controls="panel-area" tabindex="-1">m² a hectáreas</button>
+                <p class="section-kicker" data-i18n="tool.converter.kicker">01 / conversor</p>
+                <h2 id="converter-title" data-i18n="tool.converter.title">Conversor de unidades</h2>
+                <div class="converter-tabs" role="tablist" aria-label="Tipo de conversión" data-i18n-attr="aria-label:tool.converter.tabs">
+                    <button class="converter-tab" id="tab-temperature" type="button" role="tab" aria-selected="true" aria-controls="panel-temperature" tabindex="0" data-i18n="tool.converter.temperature">°C a °F</button>
+                    <button class="converter-tab" id="tab-storage" type="button" role="tab" aria-selected="false" aria-controls="panel-storage" tabindex="-1" data-i18n="tool.converter.storage">Almacenamiento</button>
+                    <button class="converter-tab" id="tab-area" type="button" role="tab" aria-selected="false" aria-controls="panel-area" tabindex="-1" data-i18n="tool.converter.area">m² a hectáreas</button>
                 </div>
                 <div class="converter-panel" id="panel-temperature" role="tabpanel" aria-labelledby="tab-temperature">
-                    <label id="temperature-input-label" for="celsius">Temperatura en grados Celsius</label>
+                    <label id="temperature-input-label" for="celsius" data-i18n="tool.temperature.label">Temperatura en grados Celsius</label>
                     <div class="input-row">
-                        <input id="celsius" name="celsius" type="number" step="any" inputmode="decimal" placeholder="Por ejemplo, 22">
+                        <input id="celsius" name="celsius" type="number" step="any" inputmode="decimal" placeholder="Por ejemplo, 22" data-i18n-attr="placeholder:tool.temperature.placeholder">
                         <span id="temperature-unit" aria-hidden="true">°C</span>
                     </div>
-                    <button class="swap-button" id="swap-temperature" type="button" aria-label="Invertir conversión de Celsius a Fahrenheit">⇄ Invertir conversión</button>
+                    <button class="swap-button" id="swap-temperature" type="button" aria-label="Invertir conversión de Celsius a Fahrenheit" data-i18n="tool.swap" data-i18n-attr="aria-label:tool.swap.temperature">⇄ Invertir conversión</button>
                     <p class="result" id="fahrenheit-result" aria-live="polite">Introduce una temperatura para convertirla.</p>
                 </div>
                 <div class="converter-panel" id="panel-storage" role="tabpanel" aria-labelledby="tab-storage" hidden>
-                    <label for="storage-value">Cantidad</label>
-                    <input class="full-input" id="storage-value" type="number" min="0" step="any" inputmode="decimal" placeholder="Por ejemplo, 1">
+                    <label for="storage-value" data-i18n="tool.storage.amount">Cantidad</label>
+                    <input class="full-input" id="storage-value" type="number" min="0" step="any" inputmode="decimal" placeholder="Por ejemplo, 1" data-i18n-attr="placeholder:tool.storage.placeholder">
                     <div class="unit-selectors">
                         <div>
-                            <label for="storage-from">De</label>
+                            <label for="storage-from" data-i18n="tool.from">De</label>
                             <select id="storage-from">
                                 <option value="b">Bits (b)</option>
                                 <option value="B">Bytes (B)</option>
@@ -64,7 +67,7 @@
                             </select>
                         </div>
                         <div>
-                            <label for="storage-to">A</label>
+                            <label for="storage-to" data-i18n="tool.to">A</label>
                             <select id="storage-to">
                                 <option value="b">Bits (b)</option>
                                 <option value="B">Bytes (B)</option>
@@ -78,85 +81,85 @@
                     <p class="result" id="storage-result" aria-live="polite">Introduce una cantidad para convertirla.</p>
                 </div>
                 <div class="converter-panel" id="panel-area" role="tabpanel" aria-labelledby="tab-area" hidden>
-                    <label id="area-input-label" for="square-meters">Superficie en metros cuadrados</label>
+                    <label id="area-input-label" for="square-meters" data-i18n="tool.area.label">Superficie en metros cuadrados</label>
                     <div class="input-row">
-                        <input id="square-meters" type="number" min="0" step="any" inputmode="decimal" placeholder="Por ejemplo, 10000">
+                        <input id="square-meters" type="number" min="0" step="any" inputmode="decimal" placeholder="Por ejemplo, 10000" data-i18n-attr="placeholder:tool.area.placeholder">
                         <span id="area-unit" aria-hidden="true">m²</span>
                     </div>
-                    <button class="swap-button" id="swap-area" type="button" aria-label="Invertir conversión de metros cuadrados a hectáreas">⇄ Invertir conversión</button>
+                    <button class="swap-button" id="swap-area" type="button" aria-label="Invertir conversión de metros cuadrados a hectáreas" data-i18n="tool.swap" data-i18n-attr="aria-label:tool.swap.area">⇄ Invertir conversión</button>
                     <p class="result" id="hectares-result" aria-live="polite">Introduce una superficie para convertirla.</p>
                 </div>
             </section>
 
             <section class="tool-card" aria-labelledby="game-title">
-                <p class="section-kicker">02 / juego</p>
-                <h2 id="game-title">Piedra, papel o tijera</h2>
-                <p class="tool-description">Elige una opción y reta al ordenador.</p>
-                <div class="choice-row" role="group" aria-label="Elige tu jugada">
-                    <button class="choice-button" type="button" data-choice="piedra" aria-label="Piedra" title="Piedra"><span aria-hidden="true">🪨</span></button>
-                    <button class="choice-button" type="button" data-choice="papel" aria-label="Papel" title="Papel"><span aria-hidden="true">📄</span></button>
-                    <button class="choice-button" type="button" data-choice="tijera" aria-label="Tijera" title="Tijera"><span aria-hidden="true">✂️</span></button>
+                <p class="section-kicker" data-i18n="game.kicker">02 / juego</p>
+                <h2 id="game-title" data-i18n="game.title">Piedra, papel o tijera</h2>
+                <p class="tool-description" data-i18n="game.description">Elige una opción y reta al ordenador.</p>
+                <div class="choice-row" role="group" aria-label="Elige tu jugada" data-i18n-attr="aria-label:game.choose">
+                    <button class="choice-button" type="button" data-choice="rock" aria-label="Piedra" title="Piedra" data-i18n-attr="aria-label:game.rock;title:game.rock"><span aria-hidden="true">🪨</span></button>
+                    <button class="choice-button" type="button" data-choice="paper" aria-label="Papel" title="Papel" data-i18n-attr="aria-label:game.paper;title:game.paper"><span aria-hidden="true">📄</span></button>
+                    <button class="choice-button" type="button" data-choice="scissors" aria-label="Tijera" title="Tijera" data-i18n-attr="aria-label:game.scissors;title:game.scissors"><span aria-hidden="true">✂️</span></button>
                 </div>
-                <div class="game-display" id="game-result" aria-label="Jugadas">
+                <div class="game-display" id="game-result" aria-label="Jugadas" data-i18n-attr="aria-label:game.plays">
                     <div class="game-side">
                         <span class="game-icon" id="player-icon" aria-hidden="true">❔</span>
-                        <span>Tú</span>
+                        <span data-i18n="game.you">Tú</span>
                     </div>
                     <span class="versus" aria-hidden="true">VS</span>
                     <div class="game-side">
                         <span class="game-icon" id="computer-icon" aria-hidden="true">❔</span>
-                        <span>Ordenador</span>
+                        <span data-i18n="game.computer">Ordenador</span>
                     </div>
                 </div>
-                <p class="result game-outcome" id="game-outcome" aria-live="polite">¡Tu turno!</p>
+                <p class="result game-outcome" id="game-outcome" aria-live="polite" data-i18n="game.turn">¡Tu turno!</p>
                 <p class="score" id="game-score" aria-live="polite">Tú 0 — 0 Ordenador</p>
             </section>
 
             <section class="tool-card life-card" aria-labelledby="life-title">
-                <p class="section-kicker">03 / simulación</p>
-                <h2 id="life-title">Juego de la Vida</h2>
-                <p class="tool-description">Dibuja células con la simulación pausada. Los patrones se insertan en el centro del tablero.</p>
-                <div class="life-controls" aria-label="Controles de simulación">
-                    <button class="add-button" id="life-toggle" type="button" aria-pressed="false">Reanudar</button>
-                    <button class="life-button" id="life-clear" type="button">Limpiar</button>
+                <p class="section-kicker" data-i18n="life.kicker">03 / simulación</p>
+                <h2 id="life-title" data-i18n="life.title">Juego de la Vida</h2>
+                <p class="tool-description" data-i18n="life.description">Dibuja células con la simulación pausada. Los patrones se insertan en el centro del tablero.</p>
+                <div class="life-controls" aria-label="Controles de simulación" data-i18n-attr="aria-label:life.controls">
+                    <button class="add-button" id="life-toggle" type="button" aria-pressed="false" data-i18n="life.resume">Reanudar</button>
+                    <button class="life-button" id="life-clear" type="button" data-i18n="life.clear">Limpiar</button>
                     <label class="life-range" for="life-speed">
-                        <span>Velocidad</span>
+                        <span data-i18n="life.speed">Velocidad</span>
                         <span><output id="life-speed-value" for="life-speed">10</output> FPS</span>
                         <input id="life-speed" type="range" min="1" max="30" value="10">
                     </label>
                 </div>
-                <div class="life-patterns" aria-label="Patrones predefinidos">
-                    <span>Patrones:</span>
+                <div class="life-patterns" aria-label="Patrones predefinidos" data-i18n-attr="aria-label:life.patterns.label">
+                    <span data-i18n="life.patterns">Patrones:</span>
                     <button class="life-button" type="button" data-life-pattern="gosper">Gosper Glider Gun</button>
                     <button class="life-button" type="button" data-life-pattern="pulsar">Pulsar</button>
                     <button class="life-button" type="button" data-life-pattern="lwss">LWSS</button>
                 </div>
                 <div class="life-randomizer">
-                    <label for="life-density">Densidad aleatoria: <output id="life-density-value" for="life-density">30</output>%</label>
+                    <label for="life-density"><span data-i18n="life.density">Densidad aleatoria:</span> <output id="life-density-value" for="life-density">30</output>%</label>
                     <input id="life-density" type="range" min="5" max="80" value="30">
-                    <button class="life-button" id="life-randomize" type="button">Aleatorizar</button>
+                    <button class="life-button" id="life-randomize" type="button" data-i18n="life.randomize">Aleatorizar</button>
                 </div>
-                <canvas class="life-board" id="life-board" width="960" height="540" aria-label="Tablero del Juego de la Vida. Pausa la simulación para dibujar células con el ratón o el tacto."></canvas>
-                <p class="life-status" id="life-status" aria-live="polite">Simulación pausada. Haz clic o arrastra para dibujar o borrar células.</p>
+                <canvas class="life-board" id="life-board" width="960" height="540" aria-label="Tablero del Juego de la Vida. Pausa la simulación para dibujar células con el ratón o el tacto." data-i18n-attr="aria-label:life.board"></canvas>
+                <p class="life-status" id="life-status" aria-live="polite" data-i18n="life.status.paused">Simulación pausada. Haz clic o arrastra para dibujar o borrar células.</p>
             </section>
 
             <section class="tool-card task-card" aria-labelledby="tasks-title">
-                <p class="section-kicker">04 / organización</p>
-                <h2 id="tasks-title">Mis tareas</h2>
+                <p class="section-kicker" data-i18n="tasks.kicker">04 / organización</p>
+                <h2 id="tasks-title" data-i18n="tasks.title">Mis tareas</h2>
                 <form class="task-form" id="task-form">
-                    <label class="visually-hidden" for="task-input">Nueva tarea</label>
-                    <input id="task-input" name="task" type="text" maxlength="160" placeholder="Escribe una tarea..." required>
-                    <button class="add-button" type="submit">Añadir</button>
+                    <label class="visually-hidden" for="task-input" data-i18n="tasks.new">Nueva tarea</label>
+                    <input id="task-input" name="task" type="text" maxlength="160" placeholder="Escribe una tarea..." data-i18n-attr="placeholder:tasks.placeholder" required>
+                    <button class="add-button" type="submit" data-i18n="tasks.add">Añadir</button>
                 </form>
                 <p class="task-message" id="task-message" aria-live="polite"></p>
-                <ul class="task-list" id="task-list" aria-label="Lista de tareas"></ul>
+                <ul class="task-list" id="task-list" aria-label="Lista de tareas" data-i18n-attr="aria-label:tasks.list"></ul>
             </section>
         </div>
     </main>
 
     <footer class="site-footer page-shell">
-        <span>Diseñado y construido por Guillem Mora.</span>
-        <a href="index.html">Volver al inicio ↑</a>
+        <span data-i18n="footer.credit">Diseñado y construido por Guillem Mora.</span>
+        <a href="index.html" data-i18n="footer.home">Volver al inicio ↑</a>
     </footer>
 </body>
 </html>

@@ -4,36 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#101411">
-    <meta name="description" content="Portfolio de Guillem Mora, desarrollador full-stack en Lleida.">
-    <title>Guillem Mora — Desarrollador Full-Stack</title>
+    <meta name="description" content="Portfolio de Guillem Mora, desarrollador full-stack en Lleida." data-i18n-attr="content:meta.home">
+    <title data-i18n="title.home">Guillem Mora — Desarrollador Full-Stack</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="assets/i18n.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
     <header class="topbar page-shell">
         <a class="brand" href="#inicio">guillem@dev:~$</a>
-        <nav class="nav-links" aria-label="Navegación principal">
-            <a href="#sobre-mi">sobre-mi</a>
-            <a href="#trabajo">trabajo</a>
-            <a href="#stack">stack</a>
-            <a href="#contacto">contacto</a>
-            <a href="interaccion.html">interacción</a>
+        <nav class="nav-links" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.label">
+            <a href="#sobre-mi" data-i18n="nav.about">sobre-mi</a>
+            <a href="#trabajo" data-i18n="nav.work">trabajo</a>
+            <a href="#stack" data-i18n="nav.stack">stack</a>
+            <a href="#contacto" data-i18n="nav.contact">contacto</a>
+            <a href="interaccion.html" data-i18n="nav.interaction">interacción</a>
+            <button class="lang-button" type="button" data-language="es" aria-label="Español" data-i18n-attr="aria-label:language.spanish" aria-pressed="true">ES</button>
+            <button class="lang-button" type="button" data-language="en" aria-label="Inglés" data-i18n-attr="aria-label:language.english" aria-pressed="false">EN</button>
         </nav>
     </header>
 
     <main>
         <section class="hero page-shell" id="inicio" aria-labelledby="hero-title">
             <div>
-                <p class="eyebrow"><span class="emoji-icon" aria-hidden="true">👋</span>Desarrollador full-stack · Lleida</p>
-                <h1 id="hero-title">Hola, soy <span>Guillem.</span></h1>
-                <p class="hero-copy">Creo soluciones web robustas y escalables, cuidando tanto la arquitectura como los detalles que hacen que un producto funcione bien.</p>
+                <p class="eyebrow"><span class="emoji-icon" aria-hidden="true">👋</span><span data-i18n="home.role">Desarrollador full-stack · Lleida</span></p>
+                <h1 id="hero-title"><span data-i18n="home.greeting">Hola, soy </span><span>Guillem.</span></h1>
+                <p class="hero-copy" data-i18n="home.description">Creo soluciones web robustas y escalables, cuidando tanto la arquitectura como los detalles que hacen que un producto funcione bien.</p>
                 <div class="button-row">
-                    <a class="button button-primary" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a>
-                    <a class="button" href="https://github.com/bk203esd" target="_blank" rel="noopener noreferrer">Ver GitHub <span aria-hidden="true">↗</span></a>
+                    <a class="button button-primary" href="#contacto"><span data-i18n="home.talk">Hablemos</span> <span aria-hidden="true">↗</span></a>
+                    <a class="button" href="https://github.com/bk203esd" target="_blank" rel="noopener noreferrer"><span data-i18n="home.github">Ver GitHub</span> <span aria-hidden="true">↗</span></a>
                 </div>
             </div>
 
-            <div class="terminal" aria-label="Presentación en una ventana de terminal">
+            <div class="terminal" aria-label="Presentación en una ventana de terminal" data-i18n-attr="aria-label:home.terminal">
                 <div class="terminal-bar" aria-hidden="true">
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -43,74 +46,74 @@
                 <div class="terminal-body">
                     <canvas class="terminal-rain" aria-hidden="true"></canvas>
                     <p class="terminal-line"><span class="terminal-prompt">guillem@dev:~$</span> whoami</p>
-                    <p class="terminal-line terminal-output"><strong>Desarrollador Full-Stack</strong></p>
-                    <p class="terminal-line"><span class="terminal-prompt">guillem@dev:~$</span> cat perfil.txt</p>
-                    <p class="terminal-line terminal-output">Construyendo soluciones web<br>robustas y escalables.</p>
+                    <p class="terminal-line terminal-output"><strong data-i18n="home.terminal.role">Desarrollador Full-Stack</strong></p>
+                    <p class="terminal-line"><span class="terminal-prompt">guillem@dev:~$</span> <span data-i18n="home.terminal.profileCommand">cat perfil.txt</span></p>
+                    <p class="terminal-line terminal-output" data-i18n-html="home.terminal.profile">Construyendo soluciones web<br>robustas y escalables.</p>
                     <p class="terminal-line"><span class="terminal-prompt">guillem@dev:~$</span> pwd</p>
                     <p class="terminal-line terminal-output">Lleida, Catalunya</p>
-                    <p class="terminal-line terminal-comment"># siempre aprendiendo algo nuevo</p>
+                    <p class="terminal-line terminal-comment" data-i18n="home.terminal.comment"># siempre aprendiendo algo nuevo</p>
                 </div>
             </div>
         </section>
 
         <section class="section page-shell" id="sobre-mi" aria-labelledby="about-title">
             <div class="section-heading">
-                <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">✨</span>01 / sobre mí</p>
-                <h2 id="about-title">Código con intención.</h2>
-                <p>Me enfoco en crear software útil y mantenible, con especial atención al rendimiento, la seguridad y una arquitectura bien pensada. Mi trabajo diario vive sobre todo en repositorios privados.</p>
+                <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">✨</span><span data-i18n="about.kicker">01 / sobre mí</span></p>
+                <h2 id="about-title" data-i18n="about.title">Código con intención.</h2>
+                <p data-i18n="about.description">Me enfoco en crear software útil y mantenible, con especial atención al rendimiento, la seguridad y una arquitectura bien pensada. Mi trabajo diario vive sobre todo en repositorios privados.</p>
             </div>
-            <p class="status-label">Aprendiendo y mejorando continuamente</p>
+            <p class="status-label" data-i18n="about.status">Aprendiendo y mejorando continuamente</p>
             <div class="experience-card">
-                <p class="experience-label">Mi tiempo en el mundo de la programación</p>
-                <div class="experience-counter" role="timer" aria-label="Tiempo en programación desde el 1 de enero de 2018">
+                <p class="experience-label" data-i18n="about.experience">Mi tiempo en el mundo de la programación</p>
+                <div class="experience-counter" role="timer" aria-label="Tiempo en programación desde el 1 de enero de 2018" data-i18n-attr="aria-label:about.timer">
                     <div class="counter-unit">
                         <span class="counter-value" data-counter="years">00</span>
-                        <span class="counter-name">años</span>
+                        <span class="counter-name" data-i18n="time.years">años</span>
                     </div>
                     <div class="counter-unit">
                         <span class="counter-value" data-counter="days">000</span>
-                        <span class="counter-name">días</span>
+                        <span class="counter-name" data-i18n="time.days">días</span>
                     </div>
                     <div class="counter-unit">
                         <span class="counter-value" data-counter="hours">00</span>
-                        <span class="counter-name">horas</span>
+                        <span class="counter-name" data-i18n="time.hours">horas</span>
                     </div>
                     <div class="counter-unit">
                         <span class="counter-value" data-counter="minutes">00</span>
-                        <span class="counter-name">minutos</span>
+                        <span class="counter-name" data-i18n="time.minutes">minutos</span>
                     </div>
                     <div class="counter-unit">
                         <span class="counter-value" data-counter="seconds">00</span>
-                        <span class="counter-name">segundos</span>
+                        <span class="counter-name" data-i18n="time.seconds">segundos</span>
                     </div>
                 </div>
-                <p class="experience-since">Desde el 1 de enero de 2018</p>
+                <p class="experience-since" data-i18n="about.since">Desde el 1 de enero de 2018</p>
             </div>
         </section>
 
         <section class="section page-shell" id="trabajo" aria-labelledby="work-title">
             <div class="section-heading">
-                <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">🚀</span>02 / ahora</p>
-                <h2 id="work-title">En qué estoy trabajando.</h2>
+                <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">🚀</span><span data-i18n="work.kicker">02 / ahora</span></p>
+                <h2 id="work-title" data-i18n="work.title">En qué estoy trabajando.</h2>
             </div>
             <article class="work-card">
                 <div>
                     <h3>Logisticfull</h3>
-                    <p>Construyendo soluciones robustas y escalables para el proyecto en el que trabajo actualmente.</p>
+                    <p data-i18n="work.description">Construyendo soluciones robustas y escalables para el proyecto en el que trabajo actualmente.</p>
                 </div>
-                <a class="text-link" href="https://www.logisticfull.com/" target="_blank" rel="noopener noreferrer">Visitar proyecto ↗</a>
+                <a class="text-link" href="https://www.logisticfull.com/" target="_blank" rel="noopener noreferrer" data-i18n="work.visit">Visitar proyecto ↗</a>
             </article>
         </section>
 
         <section class="section page-shell" id="stack" aria-labelledby="stack-title">
             <div class="section-heading">
-                <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">🛠️</span>03 / herramientas</p>
-                <h2 id="stack-title">Mi stack.</h2>
-                <p>Tecnologías con las que construyo y sigo profundizando.</p>
+                <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">🛠️</span><span data-i18n="stack.kicker">03 / herramientas</span></p>
+                <h2 id="stack-title" data-i18n="stack.title">Mi stack.</h2>
+                <p data-i18n="stack.description">Tecnologías con las que construyo y sigo profundizando.</p>
             </div>
             <div class="stack-grid">
                 <article class="stack-card">
-                    <h3><span class="emoji-icon" aria-hidden="true">⚙️</span>backend &amp; frameworks</h3>
+                    <h3><span class="emoji-icon" aria-hidden="true">⚙️</span><span data-i18n="stack.backend">backend &amp; frameworks</span></h3>
                     <ul class="tag-list">
                         <li>Python</li>
                         <li>Django</li>
@@ -131,7 +134,7 @@
                     </ul>
                 </article>
                 <article class="stack-card">
-                    <h3><span class="emoji-icon" aria-hidden="true">🧰</span>datos &amp; herramientas</h3>
+                    <h3><span class="emoji-icon" aria-hidden="true">🧰</span><span data-i18n="stack.data">datos &amp; herramientas</span></h3>
                     <ul class="tag-list">
                         <li>PostgreSQL</li>
                         <li>MySQL</li>
@@ -147,12 +150,12 @@
         <section class="section page-shell" id="contacto" aria-labelledby="contact-title">
             <div class="contact-panel">
                 <div>
-                    <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">💬</span>04 / contacto</p>
-                    <h2 id="contact-title">¿Tienes algo en mente?</h2>
-                    <p>Escríbeme o conecta conmigo.</p>
+                    <p class="section-kicker"><span class="emoji-icon" aria-hidden="true">💬</span><span data-i18n="contact.kicker">04 / contacto</span></p>
+                    <h2 id="contact-title" data-i18n="contact.title">¿Tienes algo en mente?</h2>
+                    <p data-i18n="contact.description">Escríbeme o conecta conmigo.</p>
                 </div>
                 <div class="button-row">
-                    <a class="button button-primary" href="mailto:bk203esd@gmail.com">Enviar un email <span aria-hidden="true">↗</span></a>
+                    <a class="button button-primary" href="mailto:bk203esd@gmail.com"><span data-i18n="contact.email">Enviar un email</span> <span aria-hidden="true">↗</span></a>
                     <a class="button" href="https://www.linkedin.com/in/guillemmorabea/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
                 </div>
             </div>
@@ -160,8 +163,8 @@
     </main>
 
     <footer class="site-footer page-shell">
-        <span>Diseñado y construido por Guillem Mora.</span>
-        <a class="text-link" href="#inicio">Volver arriba ↑</a>
+        <span data-i18n="footer.credit">Diseñado y construido por Guillem Mora.</span>
+        <a class="text-link" href="#inicio" data-i18n="footer.top">Volver arriba ↑</a>
     </footer>
 </body>
 </html>

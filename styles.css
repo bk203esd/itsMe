@@ -40,6 +40,11 @@
             outline-offset: 4px;
         }
 
+        .lang-button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
         .page-shell {
             width: min(100% - 48px, 1040px);
             margin-inline: auto;
@@ -83,6 +88,22 @@
         .nav-links a {
             text-decoration: none;
             transition: color 160ms ease;
+        }
+
+        .lang-button {
+            padding: 2px 5px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .lang-button:hover,
+        .lang-button[aria-pressed="true"] {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         .nav-links a:hover,
